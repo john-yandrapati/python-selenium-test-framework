@@ -1,0 +1,9 @@
+pyproject.toml
+.idea
+target
+**/__pycache__/
+src.egg-infog
+.tox
+.pytest_cache
+**/*.html
+scripts/drivers

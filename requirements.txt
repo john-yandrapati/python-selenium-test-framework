@@ -1,0 +1,6 @@
+dependency-injector
+msedge-selenium-tools==3.141
+configparser
+openpyxl
+pytest
+datetime
