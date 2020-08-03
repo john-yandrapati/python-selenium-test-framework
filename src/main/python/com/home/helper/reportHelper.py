@@ -1,8 +1,7 @@
-import errno
 from src.main.scripts.htmlReport.HTMLTestRunner import HTMLTestRunner
 from src.main.python.com.home.helper.helperInterface import iHelperInterface as HI
-import os
 from os.path import dirname
+from pathlib import Path
 
 
 class HTMLReportHelper(HI):
@@ -14,36 +13,29 @@ class HTMLReportHelper(HI):
         pass
 
     def getHTMLReport(self, testSuite):
-        try:
-            filepath = self.fileHelper.getHTMLReportPath()
-            dirPath = "/Users/johnyandrapati/PycharmProjects/testFrameworks/tox_test/target"
-                #dirname(dirname(dirname(dirname(dirname(dirname(__file__))))))+"target"
-            try:
-                os.makedirs(dirPath)
-                file = "/Users/johnyandrapati/PycharmProjects/testFrameworks/tox_test/target/HTMLTestReport.html"
+       try:
+            dirPath = dirname(dirname(dirname(dirname(dirname(dirname(dirname(__file__)))))))+"/target"
 
-                mode = 'a' if os.path.exists(file) else 'w+'
-                with open(file, mode) as f:
-                    f.write("Test Report File")
-                    runner = HTMLTestRunner(stream=f, title=u'Test Report for Google Test',
-                                            description=u'Test Results for Sample Tests')
-                    runner.run(testSuite)
-            except OSError as e:
-                if e.errno != errno.EEXIST:
-                    raise
+            Path(dirPath).mkdir(parents=True, exist_ok=True)
+            file = "HTMLTestReport.html"
+            filePath = dirPath + "/" + file
 
+            filename = Path(filePath)
+            filename.touch(exist_ok=True)
 
-            # if filepath == "":
-            #     fp = open(filepath, 'w+')
-            #     # Define the title and description of the test report
-            #     runner = HTMLTestRunner(stream=fp, title=u'Test Report for Google Test',
-            #                             description=u'Test Results for Sample Tests')
-            #     runner.run(testSuite)
-            # else:
-            #     fp = open(filepath, 'w+')
-            #     # Define the title and description of the test report
-            #     runner = HTMLTestRunner(stream=fp, title=u'Test Report for Google Test',
-            #                             description=u'Test Results for Sample Tests')
-            #     runner.run(testSuite)
-        except:
-            print(Exception)
+            if filePath == "":
+                fp = open(filename, 'wb')
+                # Define the title and description of the test report
+                runner = HTMLTestRunner(stream=fp, title=u'Test Report for Google Test',
+                                        description=u'Test Results for Sample Tests')
+                runner.run(testSuite)
+                fp.close()
+            else:
+                fp = open(filename, 'wb')
+                # Define the title and description of the test report
+                runner = HTMLTestRunner(stream=fp, title=u'Test Report for Google Test',
+                                        description=u'Test Results for Sample Tests')
+                runner.run(testSuite)
+                fp.close()
+       except:
+           raise Exception

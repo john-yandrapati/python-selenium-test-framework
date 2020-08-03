@@ -6,7 +6,6 @@ from src.main.python.com.home.helper.helperInterface import iHelperInterface as 
 
 CONFIG_FILE = "test.ini"
 EXCEL_FILE = "googleData.xlsx"
-HTML_REPORT_FILE = "HTMLTestReport.html"
 
 
 """Global Variables"""
@@ -53,20 +52,6 @@ class FileHelperClass(HI):
             if rootPath == PROJECTROOTDIR:
                 configFilePath = rootPath + "/resources/" + EXCEL_FILE
                 return configFilePath
-            else:
-                raise Exception("Path is incorrect")
-        except:
-            raise FileNotFoundError
-
-
-    def getHTMLReportPath(self):
-        try:
-            rootPath = self.getRootDir()
-            if rootPath == PROJECTROOTDIR:
-                print("This is root path for html file" + rootPath)
-                htmlReportPath = rootPath + "/resources/" + HTML_REPORT_FILE
-                print("This is root path for html file" + htmlReportPath)
-                return htmlReportPath
             else:
                 raise Exception("Path is incorrect")
         except:
