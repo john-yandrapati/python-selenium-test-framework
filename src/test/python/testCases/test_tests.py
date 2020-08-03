@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 import src.main.python.com.home.di.module as m
 
@@ -21,3 +22,6 @@ class UnitTestClass(TestCase):
 
     def test_TestCase2(self):
         self.d.step2(self.open())
+
+if __name__ == "__main__":
+    unittest.main()
