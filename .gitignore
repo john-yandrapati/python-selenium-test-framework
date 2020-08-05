@@ -6,4 +6,4 @@ src.egg-infog
 .tox
 .pytest_cache
 **/*.html
-scripts/drivers
+**/*.exe
