@@ -2,7 +2,7 @@
 
 Clone the project
 
-Download Chrome and other drivers. Place them inside src/main/script/drivers. If need give executable permissions to the driver
+Download Chrome and other drivers. Place them inside src/main/script/drivers (create the drivers folder). If need give executable permissions to the driver
 
 Update the test.ini file under src/main/resources and add the browser drivers paths
 
